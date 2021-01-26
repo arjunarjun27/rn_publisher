@@ -1,53 +1,47 @@
 import { combineReducers } from "redux";
 
-import {
-  QUOTES_AVAILABLE,
-  ADD_QUOTE,
-  UPDATE_QUOTE,
-  DELETE_QUOTE,
-} from "./actions";
+import { GET_ITEMS, ADD_ITEM, UPDATE_ITEM, DELETE_ITEM } from "./actions";
 
-let dataState = { quotes: [] };
+let dataState = { items: [] };
 
 const dataReducer = (state = dataState, action) => {
   switch (action.type) {
-    case ADD_QUOTE:
+    case ADD_ITEM:
       let { quote } = action.data;
 
-      //clone the current state
-      let clone = JSON.parse(JSON.stringify(state.quotes));
+      let clone = JSON.parse(JSON.stringify(state.items));
 
-      clone.unshift(quote); //add the new quote to the top
+      clone.unshift(quote);
 
-      return { ...state, quotes: clone };
+      return { ...state, items: clone };
 
-    case QUOTES_AVAILABLE:
-      let { quotes } = action.data;
+    case GET_ITEMS:
+      let { items } = action.data;
 
-      return { ...state, quotes };
+      return { ...state, items };
 
-    case UPDATE_QUOTE: {
+    case UPDATE_ITEM: {
       let { quote } = action.data;
 
-      let clone = JSON.parse(JSON.stringify(state.quotes));
+      let clone = JSON.parse(JSON.stringify(state.items));
 
       const index = clone.findIndex((obj) => obj.id === quote.id);
 
       if (index !== -1) clone[index] = quote;
 
-      return { ...state, quotes: clone };
+      return { ...state, items: clone };
     }
 
-    case DELETE_QUOTE: {
+    case DELETE_ITEM: {
       let { id } = action.data;
 
-      let clone = JSON.parse(JSON.stringify(state.quotes));
+      let clone = JSON.parse(JSON.stringify(state.items));
 
       const index = clone.findIndex((obj) => obj.id === id);
 
       if (index !== -1) clone.splice(index, 1);
 
-      return { ...state, quotes: clone };
+      return { ...state, items: clone };
     }
 
     default:

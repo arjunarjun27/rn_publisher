@@ -13,7 +13,7 @@ import {
 } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 
-import { addQuotes, deleteQuote } from "../actions";
+import { getItems, deleteItem } from "../actions";
 
 import ListItem from "./ListItem";
 
@@ -24,16 +24,16 @@ export default function Home(props) {
   const [isFetching, setIsFetching] = useState(false);
 
   const dataReducer = useSelector((state) => state.dataReducer);
-  const { quotes } = dataReducer;
+  const { items } = dataReducer;
 
   useEffect(() => getData(), []);
 
   const getData = () => {
     setIsFetching(true);
 
-    AsyncStorage.getItem("quotes", (err, quotes) => {
+    AsyncStorage.getItem("items", (err, items) => {
       if (err) alert(err.message);
-      else if (quotes !== null) dispatch(addQuotes(JSON.parse(quotes)));
+      else if (items !== null) dispatch(getItems(JSON.parse(items)));
 
       setIsFetching(false);
     });
@@ -56,17 +56,17 @@ export default function Home(props) {
   };
 
   const onDelete = (id) => {
-    AsyncStorage.getItem("quotes", (err, quotes) => {
+    AsyncStorage.getItem("items", (err, items) => {
       if (err) alert(err.message);
-      else if (quotes !== null) {
-        quotes = JSON.parse(quotes);
+      else if (items !== null) {
+        items = JSON.parse(items);
 
-        const index = quotes.findIndex((obj) => obj.id === id);
+        const index = items.findIndex((obj) => obj.id === id);
 
-        if (index !== -1) quotes.splice(index, 1);
+        if (index !== -1) items.splice(index, 1);
 
-        AsyncStorage.setItem("quotes", JSON.stringify(quotes), () =>
-          dispatch(deleteQuote(id))
+        AsyncStorage.setItem("items", JSON.stringify(items), () =>
+          dispatch(deleteItem(id))
         );
       }
     });
@@ -85,12 +85,12 @@ export default function Home(props) {
           title="New"
           onPress={() => navigation.navigate("AddNew", { title: "New" })}
         />
-        {quotes.length == 0 && (
+        {items.length == 0 && (
           <Text style={styles.empty}>No Publisher Found</Text>
         )}
-        {quotes.length !== 0 && (
+        {items.length !== 0 && (
           <FlatList
-            data={quotes}
+            data={items}
             renderItem={renderItem}
             keyExtractor={(item, index) => `quotes_${index}`}
           />

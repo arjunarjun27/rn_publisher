@@ -1,28 +1,24 @@
-export const QUOTES_AVAILABLE = "QUOTES_AVAILABLE";
-export const ADD_QUOTE = "ADD_QUOTE";
-export const UPDATE_QUOTE = "UPDATE_QUOTE";
-export const DELETE_QUOTE = "DELETE_QUOTE";
+export const GET_ITEMS = "GET_ITEMS";
+export const ADD_ITEM = "ADD_ITEM";
+export const UPDATE_ITEM = "UPDATE_ITEM";
+export const DELETE_ITEM = "DELETE_ITEM";
 
-// Get Quotes
-export const addQuotes = (quotes) => ({
-  type: QUOTES_AVAILABLE,
-  data: { quotes },
+export const getItems = (items) => ({
+  type: GET_ITEMS,
+  data: { items },
 });
 
-// Add Quote - CREATE (C)
-export const addQuote = (quote) => ({
-  type: ADD_QUOTE,
+export const addItem = (quote) => ({
+  type: ADD_ITEM,
   data: { quote },
 });
 
-// Update Quote - UPDATE (U)
-export const updateQuote = (quote) => ({
-  type: UPDATE_QUOTE,
+export const updateItem = (quote) => ({
+  type: UPDATE_ITEM,
   data: { quote },
 });
 
-// Delete Quote - DELETE (D)
-export const deleteQuote = (id) => ({
-  type: DELETE_QUOTE,
+export const deleteItem = (id) => ({
+  type: DELETE_ITEM,
   data: { id },
 });

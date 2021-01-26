@@ -8,9 +8,9 @@ export default function LoadingScreen(props) {
   useEffect(() => checkLocalData(), []);
 
   function checkLocalData() {
-    AsyncStorage.getItem("quotes", (err, data) => {
+    AsyncStorage.getItem("items", (err, data) => {
       if (data === null) {
-        AsyncStorage.setItem("quotes", JSON.stringify(SampleData.quotes));
+        AsyncStorage.setItem("items", JSON.stringify(SampleData.items));
         props.navigation.navigate("App");
       } else {
         props.navigation.navigate("App");

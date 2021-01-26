@@ -13,9 +13,7 @@ import {
 import { useDispatch } from "react-redux";
 import { Header } from "react-navigation-stack";
 
-import { addQuote, updateQuote } from "../actions";
-
-const MAX_LENGTH = 250;
+import { addItem, updateItem } from "../actions";
 
 export default function AddNew(props) {
   const dispatch = useDispatch();
@@ -40,21 +38,21 @@ export default function AddNew(props) {
       quote_ = { id: id, author: publisher, text: location };
     }
 
-    AsyncStorage.getItem("quotes", (err, quotes) => {
+    AsyncStorage.getItem("items", (err, items) => {
       if (err) alert(err.message);
-      else if (quotes !== null) {
-        quotes = JSON.parse(quotes);
+      else if (items !== null) {
+        items = JSON.parse(items);
 
         if (!edit) {
-          quotes.unshift(quote_);
+          items.unshift(quote_);
         } else {
-          const index = quotes.findIndex((obj) => obj.id === quote_.id);
-          if (index !== -1) quotes[index] = quote_;
+          const index = items.findIndex((obj) => obj.id === quote_.id);
+          if (index !== -1) items[index] = quote_;
         }
 
-        AsyncStorage.setItem("quotes", JSON.stringify(quotes), () => {
-          if (!edit) dispatch(addQuote(quote_));
-          else dispatch(updateQuote(quote_));
+        AsyncStorage.setItem("items", JSON.stringify(items), () => {
+          if (!edit) dispatch(addItem(quote_));
+          else dispatch(updateItem(quote_));
 
           navigation.goBack();
         });
