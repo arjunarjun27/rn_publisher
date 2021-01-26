@@ -104,6 +104,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#F5F5F5",
+    justifyContent: "center",
   },
 
   activityIndicatorContainer: {
@@ -115,8 +116,10 @@ const styles = StyleSheet.create({
 
   empty: {
     flex: 1,
-    alignSelf: "center",
-    alignContent: "stretch",
+    textAlign: "center",
+    textAlignVertical: "center",
+    color: "red",
+    fontSize: 18,
   },
 
   floatingButton: {

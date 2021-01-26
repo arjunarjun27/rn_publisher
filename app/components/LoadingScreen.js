@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { AsyncStorage } from "react-native";
-import { AppLoading } from "expo";
+import AppLoading from "expo-app-loading";
 
 import SampleData from "../sample";
 
