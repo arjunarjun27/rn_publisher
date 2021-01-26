@@ -52,7 +52,7 @@ export default function Home(props) {
   };
 
   const onEdit = (item) => {
-    navigation.navigate("NewQuote", { quote: item, title: "Edit Quote" });
+    navigation.navigate("AddNew", { quote: item, title: "Edit Quote" });
   };
 
   const onDelete = (id) => {
@@ -83,7 +83,7 @@ export default function Home(props) {
       <SafeAreaView style={styles.container}>
         <Button
           title="New"
-          onPress={() => navigation.navigate("NewQuote", { title: "New" })}
+          onPress={() => navigation.navigate("AddNew", { title: "New" })}
         />
         {quotes.length == 0 && (
           <Text style={styles.empty}>No Publisher Found</Text>

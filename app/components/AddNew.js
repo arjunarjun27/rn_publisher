@@ -17,7 +17,7 @@ import { addQuote, updateQuote } from "../actions";
 
 const MAX_LENGTH = 250;
 
-export default function NewQuote(props) {
+export default function AddNew(props) {
   const dispatch = useDispatch();
   const { navigation } = props;
 
@@ -61,8 +61,6 @@ export default function NewQuote(props) {
       }
     });
   };
-
-  //==================================================================================================
 
   const generateID = () => {
     let d = new Date().getTime();

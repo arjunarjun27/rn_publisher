@@ -53,16 +53,6 @@ export default function ListItem({
     );
   };
 
-  //Returns a colour based on the index
-  function random() {
-    if (index % 2 === 0) {
-      //check if its an even number
-      return colours[0];
-    } else {
-      return colours[1];
-    }
-  }
-
   return (
     <Swipeable
       ref={inputEl}

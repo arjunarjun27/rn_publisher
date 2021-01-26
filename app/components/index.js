@@ -3,8 +3,7 @@ import { createStackNavigator } from "react-navigation-stack";
 
 import LoadingScreen from "./LoadingScreen";
 import HomeScreen from "./Home";
-import NewQuoteScreen from "./AddNew";
-import Message from "./Message";
+import AddNewScreen from "./AddNew";
 
 const AppStack = createStackNavigator({
   Home: {
@@ -13,16 +12,10 @@ const AppStack = createStackNavigator({
       title: `Home`,
     }),
   },
-  NewQuote: {
-    screen: NewQuoteScreen,
+  AddNew: {
+    screen: AddNewScreen,
     navigationOptions: ({ navigation }) => ({
       title: `New `,
-    }),
-  },
-  Message: {
-    screen: Message,
-    navigationOptions: ({ navigation }) => ({
-      title: `Not  found`,
     }),
   },
 });
